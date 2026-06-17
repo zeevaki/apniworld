@@ -52,7 +52,7 @@ export default function UploadForm({ onPosted }: Props) {
     setLoading(true)
     try {
       // 1. Get presigned URL from our API
-      const { presignedUrl, publicUrl } = await fetch('/api/upload', {
+      const { presignedUrl, publicUrl, s3Key } = await fetch('/api/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ fileType: file.type }),
@@ -61,12 +61,18 @@ export default function UploadForm({ onPosted }: Props) {
       // 2. Upload directly to S3
       await fetch(presignedUrl, { method: 'PUT', body: file, headers: { 'Content-Type': file.type } })
 
-      // 3. Save post to Supabase
-      await fetch('/api/posts', {
+      // 3. Rekognition scans it, then saves to Supabase if clean
+      const res = await fetch('/api/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image_url: publicUrl, message }),
+        body: JSON.stringify({ image_url: publicUrl, s3_key: s3Key, message }),
       })
+
+      if (!res.ok) {
+        const { error } = await res.json()
+        alert(error)
+        return
+      }
 
       setFile(null)
       setPreview(null)

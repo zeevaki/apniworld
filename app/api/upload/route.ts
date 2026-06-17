@@ -18,5 +18,5 @@ export async function POST(req: NextRequest) {
   const presignedUrl = await getSignedUrl(s3, command, { expiresIn: 60 })
   const publicUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`
 
-  return NextResponse.json({ presignedUrl, publicUrl })
+  return NextResponse.json({ presignedUrl, publicUrl, s3Key: key })
 }
