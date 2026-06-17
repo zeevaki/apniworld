@@ -16,7 +16,7 @@ export default function Home() {
             <h1 className="text-2xl font-black text-amber-700 leading-none">اپنی دنیا</h1>
             <p className="text-xs text-stone-400 font-medium tracking-widest uppercase">ApniWorld.com</p>
           </div>
-          <p className="text-sm text-stone-500 hidden sm:block">Spreading kindness, one photo at a time 🌍</p>
+          <p className="text-sm text-stone-500 hidden sm:block">Spreading kindness, one photo at a time</p>
         </div>
       </header>
 
@@ -28,7 +28,7 @@ export default function Home() {
         {/* Divider */}
         <div className="flex items-center gap-4">
           <div className="flex-1 h-px bg-amber-200" />
-          <span className="text-amber-600 text-sm font-semibold">Kind Moments from Around the World 🌸</span>
+          <span className="text-amber-600 text-sm font-semibold">Kind Moments from Around the World</span>
           <div className="flex-1 h-px bg-amber-200" />
         </div>
 

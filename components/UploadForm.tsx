@@ -46,7 +46,7 @@ export default function UploadForm({ onPosted }: Props) {
     }, 'image/jpeg', 0.9)
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!file) return
     setLoading(true)
@@ -85,7 +85,7 @@ export default function UploadForm({ onPosted }: Props) {
 
   return (
     <div className="bg-white rounded-3xl shadow-lg p-6 w-full max-w-lg mx-auto">
-      <h2 className="text-2xl font-bold text-amber-700 mb-1 text-center">Share a Kind Moment 🌸</h2>
+      <h2 className="text-2xl font-bold text-amber-700 mb-1 text-center">Share a Kind Moment</h2>
       <p className="text-center text-stone-500 text-sm mb-5">Upload a photo that spreads kindness to the world</p>
 
       {/* Camera preview */}
@@ -97,7 +97,7 @@ export default function UploadForm({ onPosted }: Props) {
             onClick={capturePhoto}
             className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white text-amber-700 font-bold px-6 py-2 rounded-full shadow-lg text-sm"
           >
-            📸 Capture
+            Capture
           </button>
         </div>
       )}
@@ -114,7 +114,7 @@ export default function UploadForm({ onPosted }: Props) {
         {/* Upload buttons */}
         <div className="flex gap-2">
           <label className="flex-1 cursor-pointer bg-amber-50 border-2 border-dashed border-amber-300 rounded-2xl py-3 text-center text-amber-700 text-sm font-semibold hover:bg-amber-100 transition">
-            📁 Choose Photo
+            Choose Photo
             <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
           </label>
           <button
@@ -122,7 +122,7 @@ export default function UploadForm({ onPosted }: Props) {
             onClick={openCamera}
             className="flex-1 bg-rose-50 border-2 border-dashed border-rose-300 rounded-2xl py-3 text-rose-600 text-sm font-semibold hover:bg-rose-100 transition"
           >
-            📷 Take Photo
+            Take Photo
           </button>
         </div>
 
@@ -130,7 +130,7 @@ export default function UploadForm({ onPosted }: Props) {
         <textarea
           value={message}
           onChange={e => setMessage(e.target.value)}
-          placeholder="Write something kind... 💛"
+          placeholder="Write something kind..."
           rows={3}
           className="border border-stone-200 rounded-2xl px-4 py-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-amber-300"
         />
@@ -140,7 +140,7 @@ export default function UploadForm({ onPosted }: Props) {
           disabled={!file || loading}
           className="bg-amber-500 hover:bg-amber-600 disabled:opacity-40 text-white font-bold py-3 rounded-2xl transition text-sm"
         >
-          {loading ? 'Sharing...' : '🌍 Share with the World'}
+          {loading ? 'Sharing...' : 'Share with the World'}
         </button>
       </form>
     </div>
